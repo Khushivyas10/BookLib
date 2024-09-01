@@ -48,4 +48,28 @@ def test_add_book(setup_library):
 	):  # Expecting an IntegrityError due to the unique ISBN constraint
 		library.add_book(new_book)
 
+def test_borrow_book(setup_library):
+	library = setup_library
+	new_book = Book(
+		title="test_book_title",
+		author="test_book_author",
+		publication_year=9999,
+		ISBN="9783161484100",
+	)
+	library.add_book(new_book)
+
+	book_not_borrowed = library.cursor.execute(
+		"SELECT EXISTS(SELECT title FROM books WHERE title='test_book_title' AND borrowed = 0)"
+	)
+	assert (1,) in book_not_borrowed
+
+	result = library.borrow_book("test_book_title")
+	assert result == "You have borrowed 'test_book_title'."
+	book_borrowed = library.cursor.execute(
+		"SELECT EXISTS(SELECT title FROM books WHERE title='test_book_title' AND borrowed = 1)"
+	)
+	assert (1,) in book_borrowed
+
+
+
 
