@@ -94,5 +94,35 @@ def test_return_book(setup_library):
 	assert (1,) in book_returned
 
 
+def test_view_books(setup_library):
+	library = setup_library
+	book1 = Book(
+		title="test_book_title_1",
+		author="test_book_author_1",
+		publication_year=9999,
+		ISBN="9783161484100",
+	)
+	book2 = Book(
+		title="test_book_title_2",
+		author="test_book_author_2",
+		publication_year=2001,
+		ISBN="9783161484102",
+	)
+	library.add_book(book1)
+	library.add_book(book2)
+
+	# View all book details
+	all_books = library.view_available_books()
+
+	# Ensure all book were returned
+	assert len(all_books) == 2  # Assuming there were no book prior to this test
+
+	# Check that the books returned match the books Added
+	assert any(
+		b[0] == "test_book_title_1" and b[1] == "test_book_author_1" for b in all_books
+	)
+	assert any(
+		b[0] == "test_book_title_2" and b[1] == "test_book_author_2" for b in all_books
+	)
 
 
