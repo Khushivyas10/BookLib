@@ -87,13 +87,13 @@ To run tests for **Project Name**:
     ```
     
 2. **Pre-commit-hooks used**:
-   -trailing-whitespace: Removes trailing whitespace.
-   -check-yaml: Checks YAML files for syntax errors.
-   -no-commit-to-branch: Prevents committing directly to the main branch.
-   -check-merge-conflict: Ensures no merge conflicts are committed.
-   -check-ast: Checks for Python syntax errors.
-   -black: Formats Python code according to PEP 8.
-   -isort: Sorts Python imports.
-   -flake8: Checks Python code for style and potential errors.
-   -pytest: Runs tests to ensure no code breaks.
+- trailing-whitespace: Removes trailing whitespace.
+- check-yaml: Checks YAML files for syntax errors.
+- no-commit-to-branch: Prevents committing directly to the main branch.
+- check-merge-conflict: Ensures no merge conflicts are committed.
+- check-ast: Checks for Python syntax errors.
+- black: Formats Python code according to PEP 8.
+- isort: Sorts Python imports.
+- flake8: Checks Python code for style and potential errors.
+- pytest: Runs tests to ensure no code breaks.
 
