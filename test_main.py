@@ -70,6 +70,29 @@ def test_borrow_book(setup_library):
 	)
 	assert (1,) in book_borrowed
 
+def test_return_book(setup_library):
+	library = setup_library
+	book = Book(
+		title="test_book_title",
+		author="test_book_author",
+		publication_year=9999,
+		ISBN="9783161484100",
+	)
+	library.add_book(book)
+
+	result = library.borrow_book("test_book_title")
+	book_borrowed = library.cursor.execute(
+		"SELECT EXISTS(SELECT title FROM books WHERE title='test_book_title' AND borrowed = 1)"
+	)
+	assert (1,) in book_borrowed
+
+	result = library.return_book("test_book_title")
+	assert result == "You have returned 'test_book_title'."
+	book_returned = library.cursor.execute(
+		"SELECT EXISTS(SELECT title FROM books WHERE title='test_book_title' AND borrowed = 0)"
+	)
+	assert (1,) in book_returned
+
 
 
 
