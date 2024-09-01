@@ -1,8 +1,8 @@
 import inquirer
+from book import Book
+from library import library
 
-
-
-
+library = library(name="My Library")
 
 
 def main_menu():
@@ -30,10 +30,16 @@ def add_book():
 	]
 	answers = inquirer.prompt(questions)
 
-
+	# Create a new Book object using the user's input
+	new_book = Book(
+		title=answers["title"],
+		author=answers["author"],
+		publication_year=int(answers["publication_year"]),
+		ISBN=answers["ISBN"],
+	)
 
 	# Add the book to the library using the add_book method from the Library class
-
+	library.add_book(new_book)
 	print(f"Book '{answers['title']}' added successfully.")
 
 
@@ -48,10 +54,6 @@ def borrow_book():
 	answers = inquirer.prompt(questions)
 
 
-
-
-
-
 def return_book():
 	"""
 	Prompts the user for a book title and returns it if it was borrowed.
@@ -63,16 +65,11 @@ def return_book():
 	answers = inquirer.prompt(questions)
 
 
-
-
-
 def view_book():
 	"""
 	Displays all available books (those not currently borrowed) in the library.
 	"""
 	# Retrieve and display all available books using the view_available_books method from the Library class
-
-
 
 
 def perform_operation(operation):
