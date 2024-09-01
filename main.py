@@ -53,6 +53,10 @@ def borrow_book():
 	]
 	answers = inquirer.prompt(questions)
 
+	# Borrow the book using the borrow_book method from the Library class
+	result = library.borrow_book(answers["title"])
+	print(result)
+
 
 def return_book():
 	"""
