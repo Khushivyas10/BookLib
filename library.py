@@ -44,7 +44,7 @@ class library:
 		)
 		self.connection.commit()
 
-		
+
 	def borrow_book(self, title):
 		"""
 		Mark a book as borrowed in the database.
@@ -64,10 +64,27 @@ class library:
 		self.cursor.execute("UPDATE books SET borrowed = 1 WHERE title = ?", (title,))
 		self.connection.commit()
 		return f"You have borrowed '{title}'."
-
-
+	
 	def return_book(self, title):
-		pass
+		"""
+		Mark a book as returned in the database.
+
+		:param title: Title of the book to return
+		:return: A message indicating the result of the operation
+		"""
+		# Check if the book is currently borrowed
+		self.cursor.execute("SELECT borrowed FROM books WHERE title = ?", (title,))
+		result = self.cursor.fetchone()
+		if result is None:
+			return f"Book '{title}' does not exist in the library."
+		elif result[0] == 0:
+			return f"Book '{title}' is not currently borrowed."
+
+		# Mark the book as returned
+		self.cursor.execute("UPDATE books SET borrowed = 0 WHERE title = ?", (title,))
+		self.connection.commit()
+		return f"You have returned '{title}'."
+
 
 	def view_available_books(self):
 		pass

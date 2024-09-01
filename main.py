@@ -68,6 +68,10 @@ def return_book():
 	]
 	answers = inquirer.prompt(questions)
 
+	# Return the book using the return_book method from the Library class
+	result = library.return_book(answers["title"])
+	print(result)
+
 
 def view_book():
 	"""
