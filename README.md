@@ -8,7 +8,6 @@
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Configuration]
 - [Usage](#usage)
 - [Testing](#testing)
 - [Pre-commit-Hooks](#pre-commit-Hooks)
@@ -62,8 +61,9 @@ To use **BookLib**, follow these steps:
 
 **Run the application**:
     
-bash
+   ```bash
     python main.py
+   ```
 
 
 
@@ -73,14 +73,16 @@ To run tests for **Project Name**:
 
 1. **Run the test suite**:
     
-bash
+   ```bash
     pip install pytest
+   ```
 
 ## Pre-commit-Hooks
 1. **Install pre-commit**:
     
-bash
-   pip install pre-commit 
+    ```bash
+   pip install pre-commit
+    
 2. **Pre-commit-hooks used**:
    -trailing-whitespace: Removes trailing whitespace.
    -check-yaml: Checks YAML files for syntax errors.
@@ -91,6 +93,4 @@ bash
    -isort: Sorts Python imports.
    -flake8: Checks Python code for style and potential errors.
    -pytest: Runs tests to ensure no code breaks.
-
-issue
 
