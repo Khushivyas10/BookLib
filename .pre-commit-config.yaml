@@ -1,7 +1,6 @@
 exclude: '.git'
 default_stages: [commit]
-fail_fast: false
-
+fail_fast: false  # all hooks will run regardless of any failures
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -20,20 +19,38 @@ repos:
       - id: check-yaml
       - id: debug-statements
 
-  - repo: https://github.com/psf/black
+  # Automatically formats code using Black.
+  - repo: https://github.com/psf/black 
     rev: 951ccf4d5bb0d692b457a5ebc4215d755618eb68
     hooks:
       - id: black
 
-
-  - repo: https://github.com/PyCQA/isort
+  # Automatically sorts imports in Python files.
+  - repo: https://github.com/PyCQA/isort  
     rev: 5.12.0
     hooks:
       - id: isort
 
+  # Checks Python code for style and potential errors.
   - repo: https://github.com/PyCQA/flake8
     rev: 5.0.4
     hooks:
       - id: flake8
-        additional_dependencies: ['flake8-bugbear',]
+        additional_dependencies: ['flake8-bugbear']
 
+  # General test should run in CI, but since we have a small number of test cases in our project, we added it as part of Pre-commit.
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: pytest --html=report.html
+        language: system
+        types: [python]
+
+  - repo: local
+    hooks:
+      - id: pytest_report
+        name: pytest_report
+        entry: pytest
+        language: system
+        types: [python]
