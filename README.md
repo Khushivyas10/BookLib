@@ -34,24 +34,26 @@ To set up the project, follow these steps:
 
 1. **Clone the repository**:
     
-bash
+    ```bash
     git clone https://github.com/Khushivyas10/BookLib.git
     cd BookLib
+    ```
 
 2. Create and activate a virtual environment:
    
-bash
+   ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   ```
 
 3. **Install dependencies**:
     
-bash
+   ```bash
     pip install -r requirements.txt
+   ```
 
 4. **Set up the database**:
-   
-The system uses an SQLite database. The database will be automatically created when you run 
+   The system uses an SQLite database. The database will be automatically created when you run 
    the system for the first time.
 
 
@@ -82,6 +84,7 @@ To run tests for **Project Name**:
     
     ```bash
    pip install pre-commit
+    ```
     
 2. **Pre-commit-hooks used**:
    -trailing-whitespace: Removes trailing whitespace.
