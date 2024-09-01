@@ -1,4 +1,5 @@
 import inquirer
+
 from book import Book
 from library import library
 
@@ -85,7 +86,6 @@ def view_book():
 		print("Available books:")
 		for book in available_books:
 			print(f"{book[0]} by {book[1]} (Published in {book[2]}) - ISBN: {book[3]}")
-
 
 
 def perform_operation(operation):

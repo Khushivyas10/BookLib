@@ -44,7 +44,6 @@ class library:
 		)
 		self.connection.commit()
 
-
 	def borrow_book(self, title):
 		"""
 		Mark a book as borrowed in the database.
@@ -64,7 +63,7 @@ class library:
 		self.cursor.execute("UPDATE books SET borrowed = 1 WHERE title = ?", (title,))
 		self.connection.commit()
 		return f"You have borrowed '{title}'."
-	
+
 	def return_book(self, title):
 		"""
 		Mark a book as returned in the database.
@@ -84,7 +83,6 @@ class library:
 		self.cursor.execute("UPDATE books SET borrowed = 0 WHERE title = ?", (title,))
 		self.connection.commit()
 		return f"You have returned '{title}'."
-
 
 	def view_available_books(self):
 		"""
