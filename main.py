@@ -1,0 +1,99 @@
+import inquirer
+
+
+
+
+
+
+def main_menu():
+	questions = [
+		inquirer.List(
+			"operation",
+			message="Select an operation",
+			choices=["Add Book", "Borrow Book", "Return Book", "View Books", "Close"],
+		),
+	]
+	answers = inquirer.prompt(questions)
+	return answers["operation"]
+
+
+def add_book():
+	"""
+	Prompts the user for book details and adds the book to the library.
+	"""
+	# Ask user for book details
+	questions = [
+		inquirer.Text("title", message="Enter the book title"),
+		inquirer.Text("author", message="Enter the author's name"),
+		inquirer.Text("publication_year", message="Enter the publication year"),
+		inquirer.Text("ISBN", message="Enter the ISBN number"),
+	]
+	answers = inquirer.prompt(questions)
+
+
+
+	# Add the book to the library using the add_book method from the Library class
+
+	print(f"Book '{answers['title']}' added successfully.")
+
+
+def borrow_book():
+	"""
+	Prompts the user for a book title and borrows it if available.
+	"""
+	# Ask user for the title of the book to borrow
+	questions = [
+		inquirer.Text("title", message="Enter the title of the book to borrow"),
+	]
+	answers = inquirer.prompt(questions)
+
+
+
+
+
+
+def return_book():
+	"""
+	Prompts the user for a book title and returns it if it was borrowed.
+	"""
+	# Ask user for the title of the book to return
+	questions = [
+		inquirer.Text("title", message="Enter the title of the book to return"),
+	]
+	answers = inquirer.prompt(questions)
+
+
+
+
+
+def view_book():
+	"""
+	Displays all available books (those not currently borrowed) in the library.
+	"""
+	# Retrieve and display all available books using the view_available_books method from the Library class
+
+
+
+
+def perform_operation(operation):
+
+	if operation == "Add Book":
+		add_book()
+	elif operation == "Borrow Book":
+		borrow_book()
+	elif operation == "Return Book":
+		return_book()
+	elif operation == "View Books":
+		view_book()
+
+	if operation != "Close":
+		run_menu()
+
+
+def run_menu():
+	operation = main_menu()
+	perform_operation(operation)
+
+
+if __name__ == "__main__":
+	run_menu()
