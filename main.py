@@ -78,6 +78,14 @@ def view_book():
 	Displays all available books (those not currently borrowed) in the library.
 	"""
 	# Retrieve and display all available books using the view_available_books method from the Library class
+	available_books = library.view_available_books()
+	if not available_books:
+		print("No books available.")
+	else:
+		print("Available books:")
+		for book in available_books:
+			print(f"{book[0]} by {book[1]} (Published in {book[2]}) - ISBN: {book[3]}")
+
 
 
 def perform_operation(operation):

@@ -87,4 +87,13 @@ class library:
 
 
 	def view_available_books(self):
-		pass
+		"""
+		View all books that are currently available (not borrowed).
+
+		:return: A list of available books
+		"""
+		self.cursor.execute(
+			"SELECT title, author, publication_year, isbn FROM books WHERE borrowed = 0"
+		)
+		rows = self.cursor.fetchall()
+		return rows
